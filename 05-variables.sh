@@ -10,3 +10,5 @@ stty -echo
 read -r PASSWORD
 
 echo "username: $USERNAME password: $PASSWORD"
+
+stty echo
