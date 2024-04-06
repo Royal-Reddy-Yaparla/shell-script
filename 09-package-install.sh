@@ -6,7 +6,6 @@ R="\e[31m"
 G="\e[32m"
 N="\e[0m"
 
-
 # check if root user or not
 if [ $ID -ne 0 ]
 then 
@@ -16,18 +15,18 @@ fi
 
 
 VALIDATE(){
-    if [ $? -ne 0 ]
+    if [ $1 -ne 0 ]
     then 
-        echo "Installing $1 ... $R FAILED$N"
+        echo "Installing $2 ... $R FAILED$N"
         exit 1
     else
-        echo "Installing $1 ... $G SUCCESS$N"
+        echo "Installing $2 ... $G SUCCESS$N"
     fi
 }
 
 
 apt install mysql-server -y
-VALIDATE mysql
+VALIDATE $? mysql
 
 apt install git -y
-VALIDATE git
+VALIDATE $? git
