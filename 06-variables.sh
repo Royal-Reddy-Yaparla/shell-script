@@ -17,3 +17,5 @@ echo "Multiplication of $NUMBER1  and $NUMBER2 is $MULTIPLICATION"
 echo "Divison of $NUMBER1  and $NUMBER2=$DIVISION"
 
 
+echo "all arguments $@ "
+echo "total number of arguments $#"
