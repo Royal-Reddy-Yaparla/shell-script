@@ -7,10 +7,14 @@ G="\e[32m"
 R="\e[31m"
 N="\e[0m"
 
+TIMESTAMP=$(date +%F-%H-%M-%S)
+LOG_FILE="/tmp/$0-$TIMESTAMP.log"
+echo "Script excuted at $TIMESTAMP" &>> $LOG_FILE
+
 
 if [ $ID -ne 0 ]
 then 
-    echo -e "$R ERROR:: provide root user access to script$N"
+    echo -e "$R ERROR:: provide root user access to script$N" 
     exit 1
 else
     echo -e "$G you are a root user$N"
@@ -31,9 +35,9 @@ do
     yum list installed $package
     if [ $? -ne 0 ]
     then
-        yum install $package -y
+        yum install $package -y &>> $LOG_FILE
         VALIDATE $? $package
     else
-        echo -e " $package is already install so $Y SKIPPING $N"
+        echo -e " $package is already install so $Y SKIPPING $N" &>> $LOG_FILE
     fi
 done
