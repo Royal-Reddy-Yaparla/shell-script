@@ -32,7 +32,7 @@ VALIDATE(){
 
 for package in "$@"
 do 
-    yum list installed $package
+    yum list installed $package &>> $LOG_FILE
     if [ $? -ne 0 ]
     then
         yum install $package -y &>> $LOG_FILE
