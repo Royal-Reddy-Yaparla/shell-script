@@ -10,19 +10,19 @@ N="\e[0m"
 
 if [ $ID -ne 0 ]
 then 
-    echo "$R ERROR:: provide root user access to script$N"
+    echo -e "$R ERROR:: provide root user access to script$N"
     exit 1
 else
-    echo "$G you are a root user$N"
+    echo -e "$G you are a root user$N"
 fi
 
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo " Installing $2 .. $G SUCCESS $N"
+        echo -e " Installing $2 .. $G SUCCESS $N"
         exit 1
     else
-        echo " Installing $2 .. $R FAILED $N"
+        echo -e " Installing $2 .. $R FAILED $N"
     fi
 }
 
@@ -34,6 +34,6 @@ do
         yum install $package -y
         VALIDATE $? $package
     else
-        echo " $package is already install so $Y SKIPPING $N"
+        echo -e " $package is already install so $Y SKIPPING $N"
     fi
 done
